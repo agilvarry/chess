@@ -1,3 +1,5 @@
 # chess
+
+![Chess](chess_comic.jpg "Chess")
+
 Command Line Chess
-![Chess](chess_comic.jpg?raw=true "Chess")

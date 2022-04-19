@@ -4,6 +4,8 @@ require_relative 'piece'
 
 # pawn class
 class Pawn < Piece
+  attr_reader :icon
+
   def initialize(board, location, color)
     super
     @moveset = [[[1, 0]], [1, 0], [2, 0]]
@@ -19,7 +21,7 @@ class Pawn < Piece
   end
 
   def iconset(color)
-    color == :white ? ' \u2659 ' : ' u\265F '
+    color == :white ? " \u2659 " : " \u265F "
   end
 
   def valid_move?(move)

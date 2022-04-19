@@ -4,6 +4,8 @@ require_relative 'piece'
 
 # bishop piece
 class Bishop < Piece
+  attr_reader :icon
+
   def initialize(board, location, color)
     super
     @moveset = [[1, 0], [0, 1], [-1, 0], [0, -1]]
@@ -11,6 +13,6 @@ class Bishop < Piece
   end
 
   def iconset(color)
-    color == :white ? ' \u2657 ' : ' u\265D '
+    color == :white ? " \u2657 " : " \u265D "
   end
 end

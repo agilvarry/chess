@@ -13,6 +13,7 @@ class Board
 
   def initialize
     @spaces = boardset(Array.new(8) { Array.new(8, nil) })
+    @danger = []
     @turns = 0
   end
 
@@ -49,7 +50,7 @@ class Board
   def move_piece; end
 
   def board_header
-    ('a'..'h').reduce('   ') { |accum, letter| accum += " #{letter}  " }
+    ('a'..'h').reduce('   ') { |accum, letter| accum + " #{letter}  " }
   end
 
   def display
@@ -61,7 +62,6 @@ class Board
         view += '|'
       end
       puts "#{view} #{row + 1}"
-      
     end
     puts board_header
   end

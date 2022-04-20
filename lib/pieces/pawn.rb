@@ -18,6 +18,9 @@ class Pawn < Piece
     moves.each do |x, y|
       x1 = x + row
       y1 = y + col
+
+      next if x1.negative? && x1 > 7 || y1.negative? && y1 > 7
+
       potential_move = @board[x1][y1]
       break unless potential_move.nil? == true
 
@@ -31,6 +34,8 @@ class Pawn < Piece
     @attackset.each do |x, y|
       x1 = x + row
       y1 = y + col
+      next if x1.negative? || x1 > 7 || y1.negative? || y1 > 7
+
       potential_attack = @board[x1][y1]
 
       next if potential_attack.nil? == true || potential_attack.color == @color

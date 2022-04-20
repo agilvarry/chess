@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require_relative '../lib/pieces/pawn'
+require_relative '../lib/pieces/knight'
 
 RSpec.describe Pawn do
   board = [
@@ -13,7 +14,6 @@ RSpec.describe Pawn do
     %i[wpn wpn wpn wbp wbp wpn wpn wpn],
     [:wrk, nil, nil, nil, :wkg, nil, nil, :wrk]
   ]
-  #   board.spaces = kiwipete
   context "black pawn hasn't moved, unblocked" do
     subject(:pwn) { described_class.new(board, [1, 2], :black) }
 
@@ -31,17 +31,6 @@ RSpec.describe Pawn do
       expect(pwn.valid_attacks).to eq []
     end
   end
-
-  board = [
-    [:brk, nil, nil, nil, :bkg, nil, nil, :brk],
-    [:bpn, nil, :pwn1, :bpn, :bqn, :bpn, :bsp, nil],
-    [:bsp, :bkt, nil, nil, :bpn, :bkt, :bpn, nil],
-    [nil, nil, nil, :pwn2, :wkt, nil, nil, nil],
-    [nil, :bpn, nil, nil, :wpn, nil, nil, nil],
-    [nil, nil, :wkt, nil, nil, :wqn, nil, :bpn],
-    %i[wpn wpn wpn wbp wbp wpn wpn wpn],
-    [:wrk, nil, nil, nil, :wkg, nil, nil, :wrk]
-  ]
 
   context 'white pawn has moved, unblocked, can attack' do
     subject(:pwn2) { described_class.new(board, [3, 3], :white) }
@@ -63,17 +52,6 @@ RSpec.describe Pawn do
       expect(pwn2.valid_attacks).to eq [[2, 4]]
     end
   end
-
-  board = [
-    [:brk, nil, nil, nil, :bkg, nil, nil, :brk],
-    [:bpn, nil, :pwn1, :bpn, :bqn, :bpn, :bsp, nil],
-    [:bsp, :bkt, nil, nil, :bpn, :bkt, :bpn, nil],
-    [nil, nil, nil, :pwn2, :wkt, nil, nil, nil],
-    [nil, :bpn, nil, nil, :wpn, nil, nil, nil],
-    [nil, nil, :wkt, nil, nil, :wqn, nil, :bpn],
-    %i[wpn wpn wpn wbp wbp wpn wpn wpn],
-    [:wrk, nil, nil, nil, :wkg, nil, nil, :wrk]
-  ]
 
   context "black pawn can't move or attack" do
     subject(:pwn3) { described_class.new(board, [1, 0], :black) }

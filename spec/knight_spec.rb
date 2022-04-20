@@ -44,7 +44,7 @@ RSpec.describe Knight do
     end
 
     it 'black knight moves' do
-      board[3][3] = Pawn.new(board, [3, 3], :white)
+    #   board[3][3] = Pawn.new(board, [3, 3], :white)
       expect(knt2.valid_moves.sort).to eq [[0, 2], [3, 3], [4, 0], [4, 2]].sort
     end
   end

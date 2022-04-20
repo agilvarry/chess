@@ -13,23 +13,29 @@ class Pawn < Piece
     @icon = iconset(color)
   end
 
-  def valid_move(row = @location[0], col = @location[1], potential = [])
+  def valid_moves(row = @location[0], col = @location[1], potential = [])
     moves = assign_moves
     moves.each do |x, y|
-      potential_move = @board[x + row][y + col]
+      x1 = x + row
+      y1 = y + col
+      potential_move = @board[x1][y1]
       break unless potential_move.nil? == true
 
-      potential << [x, y]
+      potential << [x1, y1]
     end
     potential
   end
 
   # TODO
-  def valid_attack(row = @location[0], col = @location[1], potential = [])
+  def valid_attacks(row = @location[0], col = @location[1], potential = [])
     @attackset.each do |x, y|
-      puts x, y
-      potential_attack = @board[x + row][y + col]
-      potential << [x, y] if potential_attack.nil? == true
+      x1 = x + row
+      y1 = y + col
+      potential_attack = @board[x1][y1]
+
+      next if potential_attack.nil? == true || potential_attack.color == @color
+
+      potential << [x1, y1]
     end
     potential
   end
@@ -41,7 +47,7 @@ class Pawn < Piece
   end
 
   def attack_get(color)
-    if color == :white
+    if color == :black
       [[1, 1], [1, -1]]
     else
       [[-1, 1], [-1, -1]]
@@ -49,7 +55,7 @@ class Pawn < Piece
   end
 
   def move_get(color)
-    if color == :white
+    if color == :black
       [[[1, 0]], [[1, 0], [2, 0]]]
     else
       [[[-1, 0]], [[-1, 0], [-2, 0]]]

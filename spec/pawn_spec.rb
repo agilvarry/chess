@@ -3,12 +3,11 @@
 require_relative '../lib/pieces/pawn'
 
 RSpec.describe Pawn do
-  # let(:board) {instance_double(Board)}
-  kiwipete = [
+  board = [
     [:brk, nil, nil, nil, :bkg, nil, nil, :brk],
-    [:bpn, nil, :bpn, :bpn, :bqn, :bpn, :bsp, nil],
+    [:bpn, nil, :pwn1, :bpn, :bqn, :bpn, :bsp, nil],
     [:bsp, :bkt, nil, nil, :bpn, :bkt, :bpn, nil],
-    [nil, nil, nil, :wpn, :wkt, nil, nil, nil],
+    [nil, nil, nil, :wpn1, :wkt, nil, nil, nil],
     [nil, :bpn, nil, nil, :wpn, nil, nil, nil],
     [nil, nil, :wkt, nil, nil, :wqn, nil, :bpn],
     %i[wpn wpn wpn wbp wbp wpn wpn wpn],
@@ -16,11 +15,81 @@ RSpec.describe Pawn do
   ]
   #   board.spaces = kiwipete
   context "black pawn hasn't moved, unblocked" do
-    subject(:pwn) { Pawn.new(kiwipete, [1, 2], :black) }
+    subject(:pwn) { described_class.new(board, [1, 2], :black) }
 
     it 'pawn is on board' do
-      kiwipete[1][2] = pwn
-      expect(kiwipete[1][2].instance_of?(Pawn)).to be true
+      board[1][2] = pwn
+      expect(board[1][2].instance_of?(Pawn)).to be true
+    end
+
+    it "black pawn hasn't moved yet" do
+      expect(pwn.valid_moves).to eq [[2, 2], [3, 2]]
+    end
+
+    it 'black pawn cannot attack' do
+      board[2][1] = Knight.new(board, [2, 1], :black)
+      expect(pwn.valid_attacks).to eq []
+    end
+  end
+
+  board = [
+    [:brk, nil, nil, nil, :bkg, nil, nil, :brk],
+    [:bpn, nil, :pwn1, :bpn, :bqn, :bpn, :bsp, nil],
+    [:bsp, :bkt, nil, nil, :bpn, :bkt, :bpn, nil],
+    [nil, nil, nil, :pwn2, :wkt, nil, nil, nil],
+    [nil, :bpn, nil, nil, :wpn, nil, nil, nil],
+    [nil, nil, :wkt, nil, nil, :wqn, nil, :bpn],
+    %i[wpn wpn wpn wbp wbp wpn wpn wpn],
+    [:wrk, nil, nil, nil, :wkg, nil, nil, :wrk]
+  ]
+
+  context 'white pawn has moved, unblocked, can attack' do
+    subject(:pwn2) { described_class.new(board, [3, 3], :white) }
+    before do
+      pwn2.instance_variable_set(:@used, true)
+    end
+
+    it 'pawn is on board' do
+      board[3][3] = pwn2
+      expect(board[3][3].instance_of?(Pawn)).to be true
+    end
+
+    it 'white pawn hast moved yet' do
+      expect(pwn2.valid_moves).to eq [[2, 3]]
+    end
+
+    it 'white pawn can attack' do
+      board[2][4] = described_class.new(board, [2, 4], :black)
+      expect(pwn2.valid_attacks).to eq [[2, 4]]
+    end
+  end
+
+  board = [
+    [:brk, nil, nil, nil, :bkg, nil, nil, :brk],
+    [:bpn, nil, :pwn1, :bpn, :bqn, :bpn, :bsp, nil],
+    [:bsp, :bkt, nil, nil, :bpn, :bkt, :bpn, nil],
+    [nil, nil, nil, :pwn2, :wkt, nil, nil, nil],
+    [nil, :bpn, nil, nil, :wpn, nil, nil, nil],
+    [nil, nil, :wkt, nil, nil, :wqn, nil, :bpn],
+    %i[wpn wpn wpn wbp wbp wpn wpn wpn],
+    [:wrk, nil, nil, nil, :wkg, nil, nil, :wrk]
+  ]
+
+  context "black pawn can't move or attack" do
+    subject(:pwn3) { described_class.new(board, [1, 0], :black) }
+
+    it 'pawn is on board' do
+      board[1][0] = pwn3
+      expect(board[1][0].instance_of?(Pawn)).to be true
+    end
+
+    it 'pawn cant move' do
+      expect(pwn3.valid_moves).to eq []
+    end
+
+    it 'pawn cant attack' do
+      board[2][1] = Knight.new(board, [2, 1], :black)
+      expect(pwn3.valid_attacks).to eq []
     end
   end
 end

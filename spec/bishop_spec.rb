@@ -43,7 +43,7 @@ RSpec.describe Bishop do
     end
 
     it 'black bishop moves' do
-      expect(bsh2.valid_moves.sort).to eq [[1,1],[0,2],[3,1],[4,2], [5,3], [6,4]].sort
+      expect(bsh2.valid_moves.sort).to eq [[1, 1], [0, 2], [3, 1], [4, 2], [5, 3], [6, 4]].sort
     end
   end
 end

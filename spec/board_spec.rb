@@ -7,6 +7,8 @@ require_relative '../lib/pieces/pawn'
 require_relative '../lib/pieces/queen'
 require_relative '../lib/pieces/rook'
 require_relative '../lib/board'
+require_relative '../lib/validator'
+
 RSpec.describe Board do
   subject(:board) { described_class.new }
 
@@ -83,6 +85,10 @@ RSpec.describe Board do
       b1 = p1.instance_of?(Bishop) && p1.color == :black
       b2 = p2.instance_of?(Bishop) && p2.color == :black
       expect(b1 && b2).to be true
+    end
+
+    it 'validator initialized' do
+      expect(board.validator.instance_of?(Validator)).to be true
     end
   end
 end

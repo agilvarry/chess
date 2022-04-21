@@ -6,15 +6,15 @@ require_relative './pieces/knight'
 require_relative './pieces/pawn'
 require_relative './pieces/queen'
 require_relative './pieces/rook'
+require_relative './validator'
 
 # chess board class
 class Board
-  attr_reader :spaces
+  attr_reader :spaces, :validator
 
   def initialize
     @spaces = boardset(Array.new(8) { Array.new(8, nil) })
-    @danger = []
-    @turns = 0
+    @validator = Validator.new(@spaces)
   end
 
   def boardset(board)
@@ -45,9 +45,9 @@ class Board
     board
   end
 
-  def valid_select?; end
+  def valid_select?(player, color) end
 
-  def move_piece; end
+  def move_piece(start, move); end
 
   def board_header
     ('a'..'h').reduce('   ') { |accum, letter| accum + " #{letter}  " }

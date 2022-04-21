@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require_relative 'piece'
-
+require_relative '../validator'
 # rook piece
 class King < Piece
   attr_reader :icon
@@ -20,10 +20,13 @@ class King < Piece
     @moveset.each do |x, y|
       r = row + x
       c = col + y
-      potential |= [r, c)] if @board.validator.king_move(r,c, @color)
+      next if r.negative? || r > 7 || c.negative? || c > 7 ||
+
+      potential_move = @board[r][c]
+      next if potential_move.nil? == false && potential_move.color == @color
+
+      potential << [r, c]
     end
     potential
   end
-
-
 end

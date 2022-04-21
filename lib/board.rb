@@ -28,7 +28,7 @@ class Board
 
   def pawns(color, row, board)
     (0..7).each do |column|
-      board[row][column] = Pawn.new(@spaces, [row, column], color)
+      board[row][column] = Pawn.new(board, [row, column], color)
     end
     board
   end
@@ -67,5 +67,7 @@ class Board
   end
 end
 
-b = Board.new
-b.display
+# b = Board.new
+# b.display
+# p b.validator.board
+

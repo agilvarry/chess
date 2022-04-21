@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 # class contaions checks for all pieces
+require_relative '../validator'
 class Piece
   attr_accessor :used, :location, :color, :moveset
 

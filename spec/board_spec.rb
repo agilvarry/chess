@@ -86,9 +86,5 @@ RSpec.describe Board do
       b2 = p2.instance_of?(Bishop) && p2.color == :black
       expect(b1 && b2).to be true
     end
-
-    it 'validator initialized' do
-      expect(board.validator.instance_of?(Validator)).to be true
-    end
   end
 end

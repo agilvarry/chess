@@ -13,7 +13,7 @@ class Queen < Piece
   end
 
   def iconset(color)
-    color == :white ? " \u2655 " : " \u265B "
+    color == :black ? " \u2655 " : " \u265B "
   end
 
   def valid_moves(row = @location[0], col = @location[1], potential = [])

@@ -17,6 +17,8 @@ class Validator
     true
   end
 
+  def valid_select?(player, color); end
+
   def fetch_pieces(color)
     @board.flatten.select { |cell| cell.nil? == false && cell.color == color }
   end

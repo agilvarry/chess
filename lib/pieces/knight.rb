@@ -14,7 +14,7 @@ class Knight < Piece
   end
 
   def iconset(color)
-    color == :white ? " \u2658 " : " \u265E "
+    color == :black ? " \u2658 " : " \u265E "
   end
 
   def valid_moves(row = @location[0], col = @location[1], potential = [])

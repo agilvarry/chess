@@ -87,4 +87,15 @@ RSpec.describe Board do
       expect(b1 && b2).to be true
     end
   end
+
+  context 'moving pieces' do
+    before do
+      board.display
+    end
+    it 'move A7 pawn up 2' do
+      board.move_piece([6, 0], [4, 0])
+      # expect(board.spaces[5][0].instance_of?(Pawn) && board.spaces[7][0].nil?).to be true
+      board.display
+    end
+  end
 end

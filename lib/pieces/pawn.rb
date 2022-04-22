@@ -68,7 +68,7 @@ class Pawn < Piece
   end
 
   def iconset(color)
-    color == :white ? " \u2659 " : " \u265F "
+    color == :black ? " \u2659 " : " \u265F "
   end
 
   def valid_move?(move)

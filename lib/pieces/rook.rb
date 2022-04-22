@@ -13,7 +13,7 @@ class Rook < Piece
   end
 
   def iconset(color)
-    color == :white ? " \u2656 " : " \u265C "
+    color == :black ? " \u2656 " : " \u265C "
   end
 
   def valid_moves(row = @location[0], col = @location[1], potential = [])

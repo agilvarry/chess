@@ -13,7 +13,7 @@ class King < Piece
   end
 
   def iconset(color)
-    color == :white ? " \u2654 " : " \u265A "
+    color == :black ? " \u2654 " : " \u265A "
   end
 
   def valid_moves(row = @location[0], col = @location[1], potential = [])
@@ -22,7 +22,7 @@ class King < Piece
       c = col + y
       next if r.negative? || r > 7 || c.negative? || c > 7 ||
 
-      potential_move = @board[r][c]
+              potential_move = @board[r][c]
       next if potential_move.nil? == false && potential_move.color == @color
 
       potential << [r, c]

@@ -13,7 +13,7 @@ class Bishop < Piece
   end
 
   def iconset(color)
-    color == :white ? " \u2657 " : " \u265D "
+    color == :black ? " \u2657 " : " \u265D "
   end
 
   def valid_moves(row = @location[0], col = @location[1], potential = [])

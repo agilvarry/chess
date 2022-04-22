@@ -10,7 +10,7 @@ require_relative './validator'
 
 # chess board class
 class Board
-  attr_reader :spaces
+  attr_reader :spaces, :white_claimed, :black_claimed
 
   def initialize
     @spaces = boardset(Array.new(8) { Array.new(8, nil) })
@@ -48,14 +48,14 @@ class Board
 
   def move_piece(start, move)
     piece = @spaces[start[0]][start[1]]
-    # claim_piece(move) if @spaces[move[0], move[1]].nil? == false
+    claim_piece(move) if @spaces[move[0]][ move[1]].nil? == false
     @spaces[move[0]][move[1]] = piece
     @spaces[start[0]][start[1]] = nil
-    piece.used == true
+    piece.used = true
   end
 
   def claim_piece(loc)
-    piece = @spaces[loc[0], loc[1]]
+    piece = @spaces[loc[0]][loc[1]]
     if piece.color == :black
       @white_claimed.append(piece)
     else

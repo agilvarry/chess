@@ -89,13 +89,9 @@ RSpec.describe Board do
   end
 
   context 'moving pieces' do
-    before do
-      board.display
-    end
     it 'move A7 pawn up 2' do
       board.move_piece([6, 0], [4, 0])
       expect(board.spaces[4][0].instance_of?(Pawn) && board.spaces[4][0].used && board.spaces[6][0].nil?).to be true
-      board.display
     end
     it 'move b2 pawn down 2, A5 pawn claims' do
       board.move_piece([6, 0], [4, 0])
@@ -105,7 +101,20 @@ RSpec.describe Board do
       piece_type = board.spaces[3][1].instance_of?(Pawn)
       white_capture = board.white_claimed.length == 1
       expect(piece_color && piece_type && white_capture).to be true
-      board.display
+    end
+
+    it 'move b2 pawn down 2, A5 pawn claims' do
+      board.move_piece([6, 0], [4, 0])
+      board.move_piece([1, 1], [3, 1])
+      board.move_piece([4, 0], [3, 1])
+      board.move_piece([1, 2], [2, 2])
+      board.move_piece([3, 1], [2, 2])
+      board.move_piece([0, 1], [2, 2])
+      piece_color = board.spaces[2][2].color == :black
+      piece_type = board.spaces[2][2].instance_of?(Knight)
+      white_capture = board.white_claimed.length == 2
+      black_capture = board.black_claimed.length == 1
+      expect(piece_color && piece_type && white_capture && black_capture).to be true
     end
   end
 end

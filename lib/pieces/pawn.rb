@@ -73,6 +73,6 @@ class Pawn < Piece
   end
 
   def iconset(color)
-    color == :black ? " \u2659 " : " \u265F "
+   color == :black ? " \u2659 " : " \u265F "
   end
 end

@@ -4,9 +4,9 @@ require_relative 'piece'
 
 # knight class
 class Knight < Piece
-  attr_reader :icon
+  attr_reader :icon, :moveset
 
-  def initalize(board, location, color)
+  def initialize(board, location, color)
     super
     @moveset = [[1, 2], [2, 1], [2, -1], [1, -2],
                 [-1, -2], [-2, -1], [-2, 1], [-1, 2]]

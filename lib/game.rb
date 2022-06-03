@@ -7,3 +7,5 @@ board = Board.new
 validator = Validator.new(board)
 
 validator.update_valid_moves
+
+# board.display

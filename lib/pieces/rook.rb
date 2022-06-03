@@ -6,15 +6,15 @@ require_relative 'piece'
 class Rook < Piece
   attr_reader :icon
 
-  def initalize(board, location, color)
+  def initialize(board, location, color)
     super
     @moveset = [[0, -1], [0, 1], [1, 0], [-1, 0]]
-    @icon = icon_set(color)
+    @icon = iconset(color)
   end
 
   private
 
-  def icon_set(color)
+  def iconset(color)
     color == :black ? " \u2656 " : " \u265C "
   end
 end

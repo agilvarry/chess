@@ -6,7 +6,7 @@ require_relative 'piece'
 class Queen < Piece
   attr_reader :icon
 
-  def initalize(board, location, color)
+  def initialize(board, location, color)
     super
     @moveset = [[1, 0], [0, 1], [-1, 0], [0, -1], [-1, -1], [-1, 1], [1, -1], [1, 1]]
     @icon = icon_set(color)

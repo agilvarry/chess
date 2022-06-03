@@ -7,3 +7,24 @@ Instructions for the Project can be found here: https://www.theodinproject.com/l
 ![Chess](chess_comic.jpg "Chess")
 
 
+#TODO:
+piece class then:
+
+pawn
+rook
+queen
+king
+bishop
+knight
+
+then: board
+Castling
+En Passant
+Promotion
+
+then: validator
+stalemate
+then: game
+then: serialize
+
+(not necessarily in this order)

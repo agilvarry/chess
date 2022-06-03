@@ -8,23 +8,14 @@ Instructions for the Project can be found here: https://www.theodinproject.com/l
 
 
 #TODO:
-piece class then:
+then: validator
+then: game
 
-pawn
-rook
-queen
-king
-bishop
-knight
 
-then: board
+then: serialize
+
+special rules:
 Castling
 En Passant
 Promotion
-
-then: validator
 stalemate
-then: game
-then: serialize
-
-(not necessarily in this order)

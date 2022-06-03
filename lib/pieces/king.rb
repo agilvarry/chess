@@ -13,6 +13,8 @@ class King < Piece
     @icon = icon_set(color)
   end
 
+  private
+
   def icon_set(color)
     color == :black ? " \u2654 " : " \u265A "
   end
@@ -31,6 +33,6 @@ class King < Piece
 
       potential << [x1, y1]
     end
-    potentil
+    potential
   end
 end

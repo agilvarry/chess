@@ -13,6 +13,12 @@ class Knight < Piece
     @icon = icon_set(color)
   end
 
+  def update_valid
+    @valid_moves = valid_moves
+  end
+
+  private
+
   def icon_set(color)
     color == :black ? " \u2658 " : " \u265E "
   end

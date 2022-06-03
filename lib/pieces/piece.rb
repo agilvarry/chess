@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Piece
+    arr_accessor :used, :location, :color, :moveset
   def initalize(board, location, color)
     @moved = false
     @location = location

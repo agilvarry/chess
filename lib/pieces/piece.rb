@@ -7,7 +7,7 @@ class Piece
     @moved = false
     @location = location
     @color = color
-    @move_set = []
+    @moveset = []
     @board = board
   end
 

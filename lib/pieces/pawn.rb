@@ -8,7 +8,7 @@ class Pawn < Piece
 
   def initalize(board, location, color)
     super
-    @move_set = move_get(color)
+    @moveset = move_get(color)
     @attack_set = attack_get(color)
     @icon = icon_set(color)
   end

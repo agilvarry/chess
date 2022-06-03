@@ -24,12 +24,12 @@ class King < Piece
       x1 = x + row
       y1 = y + col
       # not valid if out of bounds
-      next if x1.negative || x1 > 7 || y1.negative || y1 > 7
+      next if x1.negative? || x1 > 7 || y1.negative? || y1 > 7
 
       potential_move = @board[x1][y1]
 
       # not valid if friendly piece
-      next if potential_move.nil? == false && potetnial_move.color == @color
+      next if potential_move.nil? == false && potential_move.color == @color
 
       potential << [x1, y1]
     end

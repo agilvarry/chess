@@ -6,8 +6,8 @@ class Validator
 
   def initialize(board)
     @board = board
-    @white_vunerable = vunerable_to_attack(:white)
-    @black_vunerable = vunerable_to_attack(:black)
+    # @white_vunerable = vunerable_to_attack(:white)
+    # @black_vunerable = vunerable_to_attack(:black)
   end
 
   def king_safe(row, col, color)
@@ -18,8 +18,8 @@ class Validator
   end
 
   def update_valid_moves
-    board.flatten.each do |piece|
-      piece.update_valid
+    @board.spaces.flatten.each do |piece|
+      piece.update_valid if piece.nil? == false
     end
   end
 
@@ -32,7 +32,7 @@ class Validator
   end
 
   def fetch_pieces(color)
-    @board.flatten.select { |cell| cell.nil? == false && cell.color == color }
+    @board.spaces.flatten.select { |cell| cell.nil? == false && cell.color == color }
   end
 
   def enemy_pieces(color)
@@ -41,16 +41,16 @@ class Validator
     fetch_pieces(:white)
   end
 
-  def vunerable_to_attack(color)
-    enemies = enemy_pieces(color)
-    vunerable = []
-    enemies.each do |enemy|
-      vunerable |= if enemy.instance_of?(Pawn)
-                     enemy.valid_attacks
-                   else
-                     enemy.valid_moves
-                   end
-    end
-    vunerable
-  end
+  # def vunerable_to_attack(color)
+  #   enemies = enemy_pieces(color)
+  #   vunerable = []
+  #   enemies.each do |enemy|
+  #     vunerable |= if enemy.instance_of?(Pawn)
+  #                    enemy.valid_attacks
+  #                  else
+  #                    enemy.valid_moves
+  #                  end
+  #   end
+  #   vunerable
+  # end
 end

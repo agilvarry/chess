@@ -18,6 +18,7 @@ class Validator
   end
 
   def update_valid_moves
+
     @board.spaces.flatten.each do |piece|
       piece.update_valid if piece.nil? == false
     end

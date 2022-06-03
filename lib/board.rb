@@ -26,9 +26,7 @@ class Board
 
   def backrow(color, row, board)
     board[row][0] = Rook.new(board, [row, 0], color)
-    k = Knight.new(board, [row, 1], color)
-    p k.moveset
-    board[row][1] = k
+    board[row][1] = Knight.new(board, [row, 1], color)
     board[row][2] = Bishop.new(board, [row, 2], color)
     board[row][3] = Queen.new(board, [row, 3], color)
     board[row][4] = King.new(board, [row, 4], color)
@@ -77,8 +75,7 @@ class Board
     (0..7).each do |row|
       view = "#{row + 1} |"
       (0..7).each do |column|
-        p @spaces[row][column].icon
-        # view += @spaces[row][column].nil? ? '   ' : @spaces[row][column].icon
+        view += @spaces[row][column].nil? ? '   ' : @spaces[row][column].icon
         view += '|'
       end
       puts "#{view} #{row + 1}"

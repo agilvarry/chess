@@ -1,12 +1,13 @@
 # frozen_string_literal: true
 
+# piece class
 class Piece
-    arr_accessor :used, :location, :color, :moveset
+  arr_accessor :used, :location, :color, :moveset
   def initalize(board, location, color)
     @moved = false
     @location = location
     @color = color
-    @moveset = []
+    @move_set = []
     @board = board
   end
 

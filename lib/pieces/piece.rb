@@ -2,22 +2,24 @@
 
 # piece class
 class Piece
-  arr_accessor :used, :location, :color, :valid_moves
-  def initalize(board, location, color)
+  attr_accessor :used, :location, :color, :moveset, :valid_moves
+
+  def initialize(board, location, color)
     @moved = false
     @location = location
     @color = color
     @board = board
+    @moveset = []
     @valid_moves = []
   end
 
   def update_valid
-    @valid_moves = valid_moves
+    @valid_moves = get_valid_moves
   end
 
   private
 
-  def valid_moves(row = @location[0], col = @location[1], potential = [])
+  def get_valid_moves(row = @location[0], col = @location[1], potential = [])
     @moveset.each do |x, y|
       x1 = row + x
       y1 = col + y

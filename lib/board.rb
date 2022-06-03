@@ -6,7 +6,6 @@ require_relative './pieces/knight'
 require_relative './pieces/pawn'
 require_relative './pieces/queen'
 require_relative './pieces/rook'
-# require_relative './validator'
 
 # chess board class
 class Board
@@ -41,7 +40,7 @@ class Board
   def board_set(board)
     board = pawns(:white, 6, board)
     board = pawns(:black, 1, board)
-    board = backrow(white, 7, board)
+    board = backrow(:white, 7, board)
     backrow(:black, 0, board)
   end
 

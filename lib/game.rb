@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
 require_relative 'board'
-require_relative ' validator'
+require_relative 'validator'
+
 board = Board.new
-validator = validator.new(board)
+validator = Validator.new(board)
+
+
+validator.update_valid_moves

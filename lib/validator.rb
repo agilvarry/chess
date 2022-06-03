@@ -17,6 +17,12 @@ class Validator
     true
   end
 
+  def update_valid_moves
+    board.flatten.each do |piece|
+      piece.update_valid
+    end
+  end
+
   def valid_select?(move, color)
     piece = @board[move[0]][move[1]]
     return false if piece.nil?
@@ -47,6 +53,4 @@ class Validator
     end
     vunerable
   end
-
-  update_valid
 end

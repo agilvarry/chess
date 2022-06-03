@@ -23,7 +23,7 @@ class Knight < Piece
     color == :black ? " \u2658 " : " \u265E "
   end
 
-  def valid_moves(row = @location[0], _col = @location[1], potential = [])
+  def get_valid_moves(row = @location[0], _col = @location[1], potential = [])
     @moveset.each do |x, y|
       x1 = x + row
       y1 = y + row

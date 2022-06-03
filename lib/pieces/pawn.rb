@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative 'piece'
+# require_relative 'piece'
 
 # pawn class
 class Pawn < Piece
@@ -14,12 +14,12 @@ class Pawn < Piece
   end
 
   def update_valid
-    @valid_moves = valid_moves + valid_attacks
+    @valid_moves = get_valid_moves + get_valid_attacks
   end
 
   private
 
-  def valid_moves(row = @location[0], col = @location[1], potential = [])
+  def get_valid_moves(row = @location[0], col = @location[1], potential = [])
     moves = assign_moves
     moves.each do |x, y|
       x1 = x + row
@@ -35,7 +35,7 @@ class Pawn < Piece
     potential
   end
 
-  def valid_attacks(row = @location[0], col = @location[1], potential = [])
+  def get_valid_attacks(row = @location[0], col = @location[1], potential = [])
     @attackset.each do |x, y|
       x1 = x + row
       y1 = y + col

@@ -16,13 +16,7 @@ class Knight < Piece
   def update_valid
     @valid_moves = valid_moves
   end
-
-  private
-
-  def icon_set(color)
-    color == :black ? " \u2658 " : " \u265E "
-  end
-
+  
   def get_valid_moves(row = @location[0], _col = @location[1], potential = [])
     @moveset.each do |x, y|
       x1 = x + row
@@ -39,4 +33,11 @@ class Knight < Piece
     end
     potential
   end
+  private
+
+  def icon_set(color)
+    color == :black ? " \u2658 " : " \u265E "
+  end
+
+
 end

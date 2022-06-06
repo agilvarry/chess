@@ -17,8 +17,6 @@ class Piece
     @valid_moves = get_valid_moves
   end
 
-  private
-
   def get_valid_moves(row = @location[0], col = @location[1], potential = [])
     @moveset.each do |x, y|
       x1 = row + x

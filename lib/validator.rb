@@ -6,8 +6,6 @@ class Validator
 
   def initialize(board)
     @board = board
-    # @white_vunerable = vunerable_to_attack(:white)
-    # @black_vunerable = vunerable_to_attack(:black)
   end
 
   def king_safe(row, col, color)
@@ -29,11 +27,6 @@ class Validator
       piece.update_valid if piece.nil? == false
     end
   end
-
-  # def update_vunerable_list
-  #   @white_vunerable = vunerable_to_attack(:white)
-  #   @black_vunerable = vunerable_to_attack(:black)
-  # end
 
   def valid_select?(move, color)
     piece = @board.spaces[move[0]][move[1]]

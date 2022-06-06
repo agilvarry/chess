@@ -11,6 +11,7 @@ class King < Piece
     super
     @moveset = [[1, 0], [-1, 0], [0, 1], [0, -1], [1, 1], [1, -1], [-1, 1], [-1, -1]]
     @icon = icon_set(color)
+    @valid_moves = []
   end
 
   def get_valid_moves(row = @location[0], col = @location[1], potential = [])
@@ -35,6 +36,4 @@ class King < Piece
   def icon_set(color)
     color == :black ? " \u2654 " : " \u265A "
   end
-
-  
 end

@@ -8,6 +8,6 @@ validator = Validator.new(board)
 
 validator.update_valid_moves
 
-p validator.vunerable_to_attack(:black)
+validator.vunerable_to_attack(:black)
 
 board.display

@@ -5,7 +5,7 @@ class Piece
   attr_accessor :used, :location, :color, :moveset, :valid_moves
 
   def initialize(board, location, color)
-    @moved = false
+    @used = false
     @location = location
     @color = color
     @board = board

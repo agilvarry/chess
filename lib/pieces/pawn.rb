@@ -50,7 +50,7 @@ class Pawn < Piece
     potential
   end
 
-  private 
+  private
 
   def assign_moves
     return @moveset[1] if @used == false
@@ -75,6 +75,6 @@ class Pawn < Piece
   end
 
   def iconset(color)
-   color == :black ? " \u2659 " : " \u265F "
+    color == :black ? " \u2659 " : " \u265F "
   end
 end

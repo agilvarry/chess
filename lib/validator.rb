@@ -17,14 +17,26 @@ class Validator
     true
   end
 
+  def find_king(color)
+    king = @board.spaces.flatten.select do |piece|
+             piece.nil? == false && piece.instance_of?(King) && piece.color == color
+           end [0]
+    king.location
+  end
+
   def update_valid_moves
     @board.spaces.flatten.each do |piece|
       piece.update_valid if piece.nil? == false
     end
   end
 
+  def update_vuberable_list
+    @white_vunerable = vunerable_to_attack(:white)
+    @black_vunerable = vunerable_to_attack(:black)
+  end
+
   def valid_select?(move, color)
-    piece = @board[move[0]][move[1]]
+    piece = @board.spaces[move[0]][move[1]]
     return false if piece.nil?
     return false if piece.color != color
 

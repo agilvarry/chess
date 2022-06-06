@@ -6,13 +6,13 @@ class Validator
 
   def initialize(board)
     @board = board
-    @white_vunerable = vunerable_to_attack(:white)
-    @black_vunerable = vunerable_to_attack(:black)
+    # @white_vunerable = vunerable_to_attack(:white)
+    # @black_vunerable = vunerable_to_attack(:black)
   end
 
   def king_safe(row, col, color)
     unsafe = vunerable_to_attack(color)
-    return false if unsafe.includes?([row, col])
+    return false if unsafe.include?([row, col])
 
     true
   end
@@ -30,10 +30,10 @@ class Validator
     end
   end
 
-  def update_vuberable_list
-    @white_vunerable = vunerable_to_attack(:white)
-    @black_vunerable = vunerable_to_attack(:black)
-  end
+  # def update_vunerable_list
+  #   @white_vunerable = vunerable_to_attack(:white)
+  #   @black_vunerable = vunerable_to_attack(:black)
+  # end
 
   def valid_select?(move, color)
     piece = @board.spaces[move[0]][move[1]]
@@ -41,6 +41,11 @@ class Validator
     return false if piece.color != color
 
     true
+  end
+
+  def valid_move?(start, stop)
+    piece = @board.spaces[start[0]][start[1]]
+    piece.valid_moves.include?(stop)
   end
 
   def fetch_pieces(color)
@@ -60,6 +65,8 @@ class Validator
       vunerable |= if enemy.instance_of?(Pawn)
                      enemy.valid_attacks
                    else
+                     p enemy.icon
+                     p enemy.valid_moves
                      enemy.valid_moves
                    end
     end

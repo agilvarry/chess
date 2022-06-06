@@ -14,6 +14,7 @@ class Piece
   end
 
   def update_valid
+    p @icon
     @valid_moves = get_valid_moves
   end
 
@@ -22,13 +23,14 @@ class Piece
       x1 = row + x
       y1 = col + y
       # we check valid moves till we hit a piece or edge
-      potential |= expand(x1, y1, x, y)
+      potential += expand(x1, y1, x, y)
     end
     potential
   end
 
   # keep adding the x and y to the row and col til we hit a piece or the end of the board
   def expand(row, col, x, y, potential = [])
+    puts "#{row}, #{col}, #{x}, #{y}"
     while row.negative? == false && row <= 7 && col.negative? == false && col <= 7
       potential_move = @board[row][col]
       break if potential_move.nil? == false && potential_move.color == @color
@@ -41,6 +43,7 @@ class Piece
       row += x
       col += y
     end
+    p potential
     potential
   end
 end

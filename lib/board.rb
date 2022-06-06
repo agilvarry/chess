@@ -55,6 +55,7 @@ class Board
     @spaces[x1][y1] = piece
     @spaces[x][y] = nil
     piece.used = true
+    piece.location = [x1, y1]
   end
 
   def claim_piece(loc)

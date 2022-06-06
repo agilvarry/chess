@@ -38,7 +38,31 @@ class Validator
 
   def valid_move?(start, stop)
     piece = @board.spaces[start[0]][start[1]]
+    p piece.valid_moves
     piece.valid_moves.include?(stop)
+  end
+
+  # check to see if this move is valid & if it will cause checkmate
+  # after the check we swap the pieces back to their inital positions
+  def check_move(start, stop)
+    return false if valid_move?(start, stop) == false # return false if move isn't valid
+
+    # get pieces
+    attacked = @board.spaces[stop[0]][stop[1]]
+    piece = @board.spaces[start[0]][start[1]]
+    # make the move, update valid moves
+    @board.spaces[stop[0]][stop[1]] = piece
+    @board.spaces[start[0]][start[1]] = nil
+    update_valid_moves
+    # check if this puts the player in check
+    king_loc = find_king(piece.color)
+    safe = king_safe(king_loc[0], king_loc[1], piece.color)
+    # swap back and update the valid moves list to what it was before
+    @board.spaces[start[0]][start[1]] = piece
+    @board.spaces[stop[0]][stop[1]] = attacked
+    update_valid_moves
+
+    safe # return true if the move is safe
   end
 
   def fetch_pieces(color)
@@ -58,8 +82,6 @@ class Validator
       vunerable |= if enemy.instance_of?(Pawn)
                      enemy.valid_attacks
                    else
-                     p enemy.icon
-                     p enemy.valid_moves
                      enemy.valid_moves
                    end
     end

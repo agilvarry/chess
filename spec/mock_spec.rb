@@ -28,13 +28,13 @@ RSpec.describe Validator do
     expect(validator.valid_select?([0, 3], :black)).to be(true)
     expect(validator.valid_move?([0, 3], [4, 7])).to be(true)
     board.move_piece([0, 3], [4, 7])
-    # board.display
-    # board.spaces[4][7].update_valid
     # white turn 3 checkmate
     helper(:white)
     king = validator.find_king(:white)
     safe = validator.king_safe(king[0], king[1], :white)
     expect(safe).to be(false)
+    validator.check_move([4, 6], [5, 6])
+    expect(validator.check_move([4, 6], [3, 6])).to be(false)
   end
 
   def helper(_color)

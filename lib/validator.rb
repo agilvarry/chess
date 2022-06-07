@@ -38,7 +38,7 @@ class Validator
 
   def valid_move?(start, stop)
     piece = @board.spaces[start[0]][start[1]]
-    p piece.valid_moves
+    p piece.icon
     piece.valid_moves.include?(stop)
   end
 

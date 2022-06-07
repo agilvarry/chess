@@ -1,21 +1,16 @@
 # Command Line Chess
 
-This is a command line chess game that I made as part of learning Ruby using The Odin Project.
+A very simple implementation of command line chess to help me get comfortable with ruby syntax and rspec testing.
 
-Instructions for the Project can be found here: https://www.theodinproject.com/lessons/ruby-ruby-final-project
+Prevents players from making illegal moves, including:
+
+* making moves not allowed by a piece
+* moving a piece not belonging to a player
+* making a move that keeps a player in check
+
+Future improvements could include:
+
+* alerting players when checkmate has occurred 
+* allowing special moves like castling, en passant and promotion 
 
 ![Chess](chess_comic.jpg "Chess")
-
-
-#TODO:
-then: validator
-then: game
-
-
-then: serialize
-
-special rules:
-Castling
-En Passant
-Promotion
-stalemate
